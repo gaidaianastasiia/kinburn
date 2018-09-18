@@ -1,0 +1,63 @@
+.footer {
+	position: relative;
+	z-index: 99;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transition: -webkit-transform 0.5s;
+	transition: -webkit-transform 0.5s;
+	-o-transition: transform 0.5s;
+	transition: transform 0.5s;
+	transition: transform 0.5s, -webkit-transform 0.5s;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+	
+	&__wafe {
+		position: relative;
+		-webkit-perspective: 1000px;
+		perspective: 1000px;
+		
+		svg {
+			position: absolute;
+			z-index: 99;
+			left: 0;
+			width: 100%;
+			height: 80px;
+			top: -78px;
+			-webkit-transform: rotateY(180deg);
+			transform: rotateY(180deg);
+		}
+	}
+
+	&__content {
+		position: relative;
+		padding: 40px 0;
+		height: 100%;
+	}
+
+	&__bg {
+		position: absolute;
+		z-index: 0;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 100%;
+		overflow: hidden;
+	}
+
+	&__bg-img {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		background: url(../img/footer__bg.jpg) no-repeat center top;
+		-webkit-background-size: cover;
+		background-size: cover;
+	}
+}
+
+.footer {
+	@include fluid(height, 150px, 400px, 320px, 768px, 150px);
+}

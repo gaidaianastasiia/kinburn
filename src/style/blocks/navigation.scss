@@ -1,0 +1,109 @@
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  visibility: hidden;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+  
+  -webkit-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  transform: scale(1.5);
+  -webkit-transition: 350ms ease all;
+  -o-transition: 350ms ease all;
+  transition: 350ms ease all;
+
+  opacity: 0;
+  background: rgba(0, 0, 0, .9);
+
+  &__item {
+    display: block;
+
+    font-family: $f-text;
+    font-size: 16px;
+    color: #fff;
+    text-transform: uppercase;
+  }
+}
+
+.navigation.opened {
+  visibility: visible;
+
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: 350ms ease all;
+  -o-transition: 350ms ease all;
+  transition: 350ms ease all;
+
+  opacity: 1;
+}
+
+@media (min-width: 992px) {
+  .navigation {
+    position: static;
+    visibility: visible;
+    
+    height: auto;
+    padding-top: 5px;
+    opacity: 1;
+    
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+    -webkit-transition: none;
+    -o-transition: none;
+    transition: none;
+    background: transparent;
+    
+    &__item {
+      color: $main_color;
+      font-size: 14px;
+      @include fluid(font-size, 14px, 16px, 992px, 1200px, 14px);
+      font-weight: 600;
+      text-transform: none;
+
+      &::after {
+        display: block;
+        content: "";
+        height: 2px;
+        margin-top: 5px;
+        width: 0%;
+        background-color: $main_color;
+        -webkit-transition: width .2s ease-in-out;
+        -o-transition: width .2s ease-in-out;
+        transition: width .2s ease-in-out;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
+}

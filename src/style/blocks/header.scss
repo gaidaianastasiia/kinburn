@@ -1,0 +1,244 @@
+.header {
+  height: 100vh;
+  min-height: 450px;
+  padding-top: 30px;
+
+  color: $main_color;
+  
+  background: #f3e2d8 url('../img/header/header-bg_mobile_1x.jpg') no-repeat center center;
+  -webkit-background-size: cover, cover;
+  background-size: cover, cover;
+
+  .row {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+
+  &__question {
+    margin-bottom: 10px;
+    font-family: $f-text;
+    font-size: 13px;
+    @include fluid(font-size, 13px, 18px, 320px, 768px, 13px);
+    @include fluid-landscape(font-size, 14px, 16px, 400px, 768px, 14px);
+    font-weight: 600;
+  }
+
+  &__title {
+    margin-bottom: 20px;
+    @include fluid-portrait(margin-bottom, 25px, 30px, 320px, 768px, 25px);
+    font-family: $f-title;
+    font-size: 50px;
+    @include fluid-portrait(font-size, 50px, 76px, 320px, 768px, 50px);
+    @include fluid-landscape(font-size, 54px, 68px, 400px, 768px, 54px);
+    line-height: .9;
+
+    span {
+      display: block;
+    }
+  }
+
+  &__btn {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    
+    padding-top: 10px;
+    @include fluid-portrait(padding-top, 10px, 14px, 400px, 768px, 10px);
+    @include fluid-landscape(padding-top, 9px, 12px, 400px, 768px, 9px);
+    
+    padding-right: 15px;
+    @include fluid-portrait(padding-right, 15px, 30px, 400px, 768px, 15px);
+    
+    padding-bottom: 10px;
+    @include fluid-portrait(padding-bottom, 10px, 14px, 400px, 768px, 10px);
+    @include fluid-landscape(padding-bottom, 9px, 12px, 400px, 768px, 9px);
+    
+    padding-left: 15px;
+    @include fluid-portrait(padding-left, 15px, 30px, 400px, 768px, 15px);
+
+    font-family: $f-text;
+    font-size: 11px;
+    @include fluid-portrait(font-size, 11px, 15px, 400px, 768px, 11px);
+    @include fluid-landscape(font-size, 10px, 14px, 400px, 768px, 10px);
+    font-weight: 700;
+    line-height: 1;
+    color: #f3e2d8;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    
+    border: 2px solid $main_color;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background: $main_color;
+    
+    &:active{
+      background: #222;
+    }
+  }
+
+  &__navigation {
+    padding: 0;
+
+    text-align: center;
+  }
+}
+
+@media (min-width: 360px) and (orientation : portrait) {
+  .header {
+    padding-top: 50px;
+  }
+}
+
+@media (min-width: 360px) {
+  .header {
+    &__content-container {
+      padding-top: 5px;
+      padding-bottom: 7px;
+      padding-left: 15px;
+
+      border-left: 3px solid $main_color;
+    }
+  }
+}
+
+@media (min-width: 567px) {
+  .header {
+    &__content-container {
+      border-left-width: 4px;
+    }
+  }
+}
+
+@media (min-width: 576px) {
+  .header {
+    background-image: url('../img/header/header-bg_tablet-1_1x.jpg');
+  }
+}
+
+@media (min-width: 768px) {
+  .header {
+    background-image: url('../img/header/header-bg_tablet-2_1x.jpg');
+  }
+}
+
+@media (min-width: 992px) {
+  .header {
+    height: 100vh;
+    min-height: 635px;
+
+    background-image: url('../img/header/header-bg_laptop_1x.jpg');
+    background-attachment: fixed;
+    
+    &__content-container {
+      padding-left: 0;
+      padding-right: 20px;
+      text-align: right;
+      border-left: none;
+      border-right: 4px solid $main_color;
+    }
+    
+    &__question {
+      @include fluid(font-size, 14px, 16px, 992px, 1200px, 14px);
+    }
+
+    &__title {
+      margin-bottom: 30px;  
+      @include fluid(font-size, 66px, 74px, 992px, 1440px, 66px);
+    }
+
+    &__btn {
+      padding: 12px 35px;
+      @include fluid(font-size, 12px, 14px, 992px, 1200px, 12px);
+      
+      span {
+        display: inline-block;
+        -webkit-transition: all 0.3s;
+        -o-transition: all 0.3s;
+        transition: all 0.3s;
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0);      
+      }
+
+      &:hover>span {
+        -webkit-transform: translateX(-15px);
+        -ms-transform: translateX(-15px);
+        transform: translateX(-15px);
+      }
+
+      &::after {
+        position: absolute;
+        content: '\e900';
+        font-family: 'Kinburn';
+        color: #f3e2d8;
+        opacity: 0;
+        top: 50%;
+        right: 30px;
+        line-height: 0;
+        -webkit-transition: all 0.3s;
+        -o-transition: all 0.3s;
+        transition: all 0.3s;
+        -webkit-transform: translate3d(40px,0,0);
+        transform: translate3d(40px,0,0);
+        -webkit-transition-timing-function: cubic-bezier(0.75,0,0.125,1);
+        -o-transition-timing-function: cubic-bezier(0.75,0,0.125,1);
+        transition-timing-function: cubic-bezier(0.75,0,0.125,1);
+      }
+
+      &:hover::after {
+        opacity: 1;
+        right: 16px;
+        -webkit-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+      }
+    }
+
+    &__navigation {
+      padding: 0 15px;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .header {
+    background-image: url('../img/header/header-bg_desktop_1x.jpg');
+  }
+}
+
+
+@media (min-width: 320px) and (-webkit-min-device-pixel-ratio: 1.5), (min-width: 320px) and (-o-min-device-pixel-ratio: 3/2), (min-width: 320px) and (min-resolution: 144dpi), (min-width: 320px) and (min-resolution: 1.5dppx) {
+  .header {
+    background-image: url('../img/header/header-bg_mobile_2x.jpg');
+  }
+}
+
+@media (min-width: 576px) and (-webkit-min-device-pixel-ratio: 1.5), (min-width: 576px) and (-o-min-device-pixel-ratio: 3/2), (min-width: 576px) and (min-resolution: 144dpi), (min-width: 576px) and (min-resolution: 1.5dppx) {
+  .header {
+    background-image: url('../img/header/header-bg_tablet-1_2x.jpg');
+  } 
+}
+
+@media (min-width: 768px) and (-webkit-min-device-pixel-ratio: 1.5), (min-width: 768px) and (-o-min-device-pixel-ratio: 3/2), (min-width: 768px) and (min-resolution: 144dpi), (min-width: 768px) and (min-resolution: 1.5dppx) {
+  .header {
+    background-image: url('../img/header/header-bg_tablet-2_2x.jpg');
+  }
+}
+
+@media (min-width: 992px) and (-webkit-min-device-pixel-ratio: 1.5), (min-width: 992px) and (-o-min-device-pixel-ratio: 3/2), (min-width: 992px) and (min-resolution: 144dpi), (min-width: 992px) and (min-resolution: 1.5dppx) {
+  .header {
+    background-image: url('../img/header/header-bg_laptop_2x.jpg');
+  }
+}
+
+@media (min-width: 1200px) and (-webkit-min-device-pixel-ratio: 1.5), (min-width: 1200px) and (-o-min-device-pixel-ratio: 3/2), (min-width: 1200px) and (min-resolution: 144dpi), (min-width: 1200px) and (min-resolution: 1.5dppx) {
+  .header {
+    background-image: url('../img/header/header-bg_desktop_2x.jpg');
+  }
+}

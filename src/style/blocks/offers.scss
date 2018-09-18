@@ -1,0 +1,224 @@
+.offers {
+	&__content {
+		margin: 0 auto;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-flex-direction: column;
+		-ms-flex-direction: column;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		flex-direction: column;
+		-webkit-align-items: center;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+		padding: 0;
+		@include fluid(padding-top, 40px, 80px, 320px, 768px, 40px);
+		@include fluid(padding-bottom, 40px, 80px, 320px, 768px, 40px);
+	}
+
+	&__title {
+		@include fluid(margin-bottom, 25px, 40px, 320px, 768px, 25px);
+
+		font-family: $f-title;
+		@include fluid(font-size, 36px, 50px, 320px, 768px, 36px);
+		line-height: 1;
+	}
+
+	&__text {
+		width: 73%;
+		margin: 0 auto;
+		@include fluid(margin-bottom, 30px, 45px, 320px, 768px, 25px);
+
+		@include fluid(font-size, 15px, 18px, 320px, 768px, 15px);
+		line-height: 1.5;
+
+		text-align: justify;
+		-webkit-hyphens: auto;
+		-ms-hyphens: auto;
+		hyphens: auto;
+	}
+
+	&__btn {
+		position: relative;
+		display: inline-block;
+		vertical-align: top;
+
+		@include fluid(padding-top, 12px, 14px, 400px, 768px, 12px);
+		@include fluid(padding-right, 20px, 30px, 400px, 768px, 20px);
+		@include fluid(padding-bottom, 12px, 14px, 400px, 768px, 12px);
+		@include fluid(padding-left, 20px, 30px, 400px, 768px, 20px);
+
+		font-family: $f-text;
+		@include fluid(font-size, 12px, 15px, 400px, 768px, 12px);
+		font-weight: 700;
+		line-height: 1;
+		color: #FFF;
+		text-transform: uppercase;
+		letter-spacing: .5px;
+
+		border: 2px solid $main_color;
+		-webkit-border-radius: 2px;
+		border-radius: 2px;
+		background: $main_color;
+
+		&:active{
+			background: #222;
+		}
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	&__photo {
+		padding: 0;
+		margin: 0 auto;
+		margin-bottom: 15px;
+	}
+}
+
+@media (min-width: 400px) {
+	.offers {
+		&__content {
+			width: 70%;
+		}
+	}
+}
+
+@media (min-width: 576px) {
+	.offers {
+		&__content {
+			width: 65%;
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	.offers {
+		&__content {
+			width: 60%;
+		}
+	}
+}
+
+.offers {
+	@include fluid(margin-bottom, 80px, 160px, 320px, 768px, 80px);
+}
+
+@media (min-width: 992px) {
+	.offers {
+		&__content {
+			padding: 40px;
+			padding-top: 0;
+		}
+
+		&__title {
+			margin-bottom: 30px;
+			font-size: 50px;
+		}
+
+		&__text {
+			width: 100%;
+			margin-left: 0;
+			margin-right: 0;
+			margin-bottom: 30px;
+			font-size: 14px;
+		}
+
+		&__btn {
+			padding: 12px 35;
+			font-size: 12px;
+
+			span {
+				display: inline-block;
+				-webkit-transition: all 0.3s;
+				-o-transition: all 0.3s;
+				transition: all 0.3s;
+				-webkit-transform: translateX(0);
+				-ms-transform: translateX(0);
+				transform: translateX(0);      
+			}
+
+			&:hover>span {
+				-webkit-transform: translateX(-15px);
+				-ms-transform: translateX(-15px);
+				transform: translateX(-15px);
+			}
+
+			&::after {
+				position: absolute;
+				content: '\e900';
+				font-family: 'Kinburn';
+				color: #f3e2d8;
+				opacity: 0;
+				top: 50%;
+				right: 30px;
+				line-height: 0;
+				-webkit-transition: all 0.3s;
+				-o-transition: all 0.3s;
+				transition: all 0.3s;
+				-webkit-transform: translate3d(40px,0,0);
+				transform: translate3d(40px,0,0);
+				-webkit-transition-timing-function: cubic-bezier(0.75,0,0.125,1);
+				-o-transition-timing-function: cubic-bezier(0.75,0,0.125,1);
+				transition-timing-function: cubic-bezier(0.75,0,0.125,1);
+			}
+
+			&:hover::after {
+				opacity: 1;
+				right: 16px;
+				-webkit-transform: translate3d(0,0,0);
+				transform: translate3d(0,0,0);
+			}
+		}
+
+		&__photo {
+			padding-left: 15px;
+			padding-right: 15px;
+			margin-bottom: 0;
+		}
+
+		&__photos {
+			position: relative;
+			bottom: 65px;
+			-webkit-flex-direction: row;
+			-ms-flex-direction: row;
+			-webkit-box-orient: horizontal;
+			-webkit-box-direction: normal;
+			flex-direction: row;
+			-webkit-align-items: flex-end;
+			-webkit-box-align: end;
+			-ms-flex-align: end;
+			align-items: flex-end;
+		}
+	}
+}
+
+@media (min-width: 1200px) {
+	.offers {
+		&__content {
+			padding: 40px;
+			padding-top: 0;
+		}
+
+		&__title {
+			font-size: 56px;
+		}
+
+		&__text {
+			font-size: 16px;
+		}
+
+		&__btn {
+			font-size: 14px;
+		}
+
+		&__photos {
+			bottom: 115px;
+		}
+	}
+}

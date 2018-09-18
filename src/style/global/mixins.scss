@@ -1,0 +1,71 @@
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+@function calcFluid($f-min, $f-max, $w-min, $w-max, $units: px) {
+  $f-min: strip-unit($f-min);
+  $f-max: strip-unit($f-max);
+  $w-min: strip-unit($w-min);
+  $w-max: strip-unit($w-max);
+  $k: ($f-max - $f-min)/($w-max - $w-min);
+  $b: $f-min - $k * $w-min;
+  $b: $b + $units;
+
+  @return calc( #{$k} * 100vw + #{$b} );
+}
+
+@mixin fluid($pr, $f-min, $f-max, $w-min, $w-max, $fallback: false) {
+  #{$pr}: $f-min;
+
+  @media (min-width: $w-min) {
+    @if ($fallback) {
+      #{$pr}: $fallback;
+    }
+    #{$pr}: calcFluid($f-min, $f-max, $w-min, $w-max, px);
+  }
+  @media (min-width: $w-max) {
+    #{$pr}: $f-max;
+  }
+}
+
+@mixin fluid-pr($pr, $f-min, $f-max, $w-min, $w-max, $fallback: false) {
+  #{$pr}: $f-min;
+
+  @media (min-width: $w-min) {
+    @if ($fallback) {
+      #{$pr}: $fallback;
+    }
+    #{$pr}: calcFluid($f-min, $f-max, $w-min, $w-max, %);
+  }
+  @media (min-width: $w-max) {
+    #{$pr}: $f-max;
+  }
+}
+
+@mixin fluid-portrait($pr, $f-min, $f-max, $w-min, $w-max, $fallback: false) {
+  @media (min-width: $w-min) and (orientation : portrait) {
+     @if ($fallback) {
+      #{$pr}: $fallback;
+    }
+    #{$pr}: calcFluid($f-min, $f-max, $w-min, $w-max, px);
+  }
+  @media (min-width: $w-max) and (orientation : portrait) {
+    #{$pr}: $f-max;
+  }
+}
+
+@mixin fluid-landscape($pr, $f-min, $f-max, $w-min, $w-max, $fallback: false) {
+  @media (min-width: $w-min) and (orientation : landscape) {
+     @if ($fallback) {
+      #{$pr}: $fallback;
+    }
+    #{$pr}: calcFluid($f-min, $f-max, $w-min, $w-max, px);
+  }
+  @media (min-width: $w-max) and (orientation : landscape) {
+    #{$pr}: $f-max;
+  }
+}
